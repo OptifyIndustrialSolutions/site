@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Optify provides a bounded, edge-resident supervisory optimization layer for industrial process drift. It works above existing PLC, DCS, APC, or MPC systems to recommend inspectable trims and support controlled re-baselining after maintenance.">
+  <meta name="keywords" content="industrial process optimization, supervisory optimizer, process drift detection, edge control system, local digital twin, industrial AI, PLC optimization layer, bounded optimization">
+  
+  <!-- Open Graph Tags -->
+  <meta property="og:title" content="Optify | Supervisory Optimization for Industrial Process Drift">
+  <meta property="og:description" content="Improve process consistency without replacing existing automation.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://optify.io">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  
+  <title>Optify | Supervisory Optimization for Industrial Process Drift</title>
+</head>
+<body>
+  <!-- Navigation -->
+  <header>
+    <div class="container">
+      <nav class="flex flex--between flex--center">
+        <div class="nav-brand">Optify</div>
+        <ul class="nav-menu">
+          <li><a href="#problem">Problem</a></li>
+          <li><a href="#architecture">Architecture</a></li>
+          <li><a href="#maintenance">Maintenance</a></li>
+          <li><a href="#validation">Validation</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#contact" class="btn btn-primary btn-small">Request Validation</a></li>
+        </ul>
+        <div class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="section--hero" id="hero">
+      <div class="container">
+        <div class="grid grid--2-cols">
+          <div>
+            <h1>Bounded Supervisory Optimization for Industrial Process Drift</h1>
+            <p class="text-lg">Optify sits above existing PLC, DCS, APC, or MPC systems to identify localized process drift, recommend inspectable trims, and support controlled re-baselining after maintenance.</p>
+            
+            <div class="flex gap-4 mt-8">
+              <a href="#contact" class="btn btn-primary">Request an Engineering Validation</a>
+              <a href="#architecture" class="btn btn-secondary">View Architecture</a>
+            </div>
+            
+            <p class="text-sm text-muted mt-12">Edge-resident. Physics-informed. Advisory-first. Built for bounded deployment.</p>
+          </div>
+          
+          <div class="hide-mobile text-center">
+            <div style="padding: 40px; background-color: var(--color-bg-secondary); border-radius: 8px; border: 1px solid #e8e8e8;">
+              <div style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.8;">
+                <div style="margin-bottom: 20px; font-weight: 600; color: var(--color-text-primary);">Optify Supervisory Optimizer</div>
+                <div style="color: #999; margin-bottom: 20px;">↓</div>
+                <div style="margin-bottom: 20px; font-weight: 600; color: var(--color-text-primary);">Existing PLC / DCS / APC / MPC</div>
+                <div style="color: #999; margin-bottom: 20px;">↓</div>
+                <div style="margin-bottom: 20px; font-weight: 600; color: var(--color-text-primary);">Plant Equipment and Sensors</div>
+                <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid #d0d0d0; font-size: 12px; color: var(--color-text-muted);">
+                  <div>Local digital twins</div>
+                  <div>Confidence gates</div>
+                  <div>Advisory trims</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problem">
+      <div class="container container--narrow">
+        <h2 class="text-center">Optimization rarely fails on day one. It fails after the plant changes.</h2>
+        
+        <div class="prose mt-12">
+          <p>Industrial models often perform well during commissioning. The harder test comes later.</p>
+          <p>Sensors are replaced. Actuators age. Cleaning changes heat transfer. Air leakage is corrected. Ambient conditions shift. Recipes change. Startup data becomes noisy. Operators intervene.</p>
+          <p>A model that cannot separate steady-state behavior from transient noise will eventually lose trust.</p>
+          <p><strong>The question is not whether optimization is possible.</strong></p>
+          <p><strong>The question is whether optimization remains trustworthy after the plant changes.</strong></p>
+        </div>
+        
+        <!-- Placeholder for trend visualization -->
+        <div style="margin-top: 40px; padding: 40px; background-color: var(--color-bg-secondary); border-radius: 8px; border: 1px solid #e8e8e8; text-align: center; color: var(--color-text-muted);">
+          <p>[Plant Drift Timeline Visual]</p>
+          <p style="font-size: 12px; margin-top: 8px;">Stable baseline → Maintenance → Transient data (exclude) → Verified steady-state window → New baseline</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- What Optify Does Section -->
+    <section class="section--alt" id="what-optify-does">
+      <div class="container">
+        <div class="max-w-narrow">
+          <h2>A supervisory layer for localized process behavior</h2>
+          <p>Optify does not attempt to learn the entire factory from raw data. It builds smaller, physics-informed local digital twins around selected high-value process loops and operating zones.</p>
+        </div>
+        
+        <div class="grid grid--4-cols mt-12">
+          <div class="card">
+            <div class="card-icon">📊</div>
+            <h4 class="card-title">Local Drift Detection</h4>
+            <p class="card-text">Detects shifts in machine behavior, process response, or operating-zone performance using relevant historical comparison sets.</p>
+          </div>
+          
+          <div class="card">
+            <div class="card-icon">🧮</div>
+            <h4 class="card-title">Inspectable Mathematical Layer</h4>
+            <p class="card-text">Uses distance-based similarity, local interpolation, and regularized solvers instead of a generic black-box AI model.</p>
+          </div>
+          
+          <div class="card">
+            <div class="card-icon">⚙️</div>
+            <h4 class="card-title">Advisory Trim Recommendations</h4>
+            <p class="card-text">Recommends conservative trims or setpoint support that can remain advisory or be mapped into strict PLC-bounded limits.</p>
+          </div>
+          
+          <div class="card">
+            <div class="card-icon">🔧</div>
+            <h4 class="card-title">Reset & Learn After Maintenance</h4>
+            <p class="card-text">Supports controlled re-baselining after maintenance using verified steady-state data, not noisy startup transients.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contained Deployment Section -->
+    <section id="contained-deployment">
+      <div class="container">
+        <div class="grid grid--2-cols gap-12">
+          <div>
+            <h2>Designed for contained deployment</h2>
+            <p>Optify is designed to reduce the risk profile of industrial AI adoption. It can begin in advisory mode, operate within defined process boundaries, and reduce authority when confidence is low.</p>
+            
+            <ul class="checklist mt-8">
+              <li>Sits above existing automation</li>
+              <li>Does not replace PLC or safety logic</li>
+              <li>Starts in advisory mode</li>
+              <li>Uses engineer-visible thresholds</li>
+              <li>Blocks low-confidence recommendations</li>
+              <li>Supports fallback to base automation</li>
+              <li>Handles maintenance through human-gated re-baselining</li>
+              <li>Operates locally at the edge without cloud dependency</li>
+            </ul>
+          </div>
+          
+          <div>
+            <div class="highlight-box">
+              <p>Core principle: low confidence reduces authority.</p>
+            </div>
+            
+            <div style="margin-top: 32px; padding: 32px; background-color: var(--color-bg-secondary); border-radius: 8px; border: 1px solid #e8e8e8;">
+              <p style="font-size: 14px; color: var(--color-text-muted); margin: 0; line-height: 1.8;">
+                <strong style="color: var(--color-text-primary);">Confidence Gate</strong><br>
+                ↓<br>
+                High Confidence → Advisory Trim<br>
+                Medium Confidence → Restricted Trim<br>
+                Low Confidence → Block / Alert / Fallback
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section class="section--alt" id="architecture">
+      <div class="container">
+        <h2>Edge architecture built around process context</h2>
+        <p class="mt-8">Optify's model quality depends on context, not raw data volume. Data is filtered and classified by recipe, operating mode, sensor validity, machine state, maintenance context, and operating zone before it is used for local comparison.</p>
+        
+        <!-- Architecture Flow Diagram -->
+        <div style="margin: 40px 0; padding: 32px; background-color: var(--color-bg-light); border-radius: 8px; border: 1px solid #e8e8e8; font-size: 13px; line-height: 1.8;">
+          <div style="text-align: center; color: var(--color-text-secondary);">
+            <div style="margin-bottom: 16px;"><strong>Plant Data</strong></div>
+            <div style="color: #999; margin-bottom: 16px;">Sensors / PLC / Historian / Lab Inputs</div>
+            <div style="color: #999; margin-bottom: 16px;">↓</div>
+            <div style="margin-bottom: 16px;"><strong>Context Filter</strong></div>
+            <div style="color: #999; margin-bottom: 16px;">Recipe / Mode / Sensor Validity / Maintenance State / Operating Zone</div>
+            <div style="color: #999; margin-bottom: 16px;">↓</div>
+            <div style="margin-bottom: 16px;"><strong>Local Digital Twin</strong></div>
+            <div style="color: #999; margin-bottom: 16px;">KD-tree / KNN / Mahalanobis Similarity / Ridge Solver</div>
+            <div style="color: #999; margin-bottom: 16px;">↓</div>
+            <div style="margin-bottom: 16px;"><strong>Confidence Gate</strong></div>
+            <div style="color: #999; margin-bottom: 16px;">Distance Threshold / Neighbor Count / Zone Validity / Statistical Limit</div>
+            <div style="color: #999; margin-bottom: 16px;">↓</div>
+            <div style="margin-bottom: 16px;"><strong>Output Layer</strong></div>
+            <div style="color: #999;">Advisory Trim / PLC-Bounded Constraint / Alert / Fallback</div>
+          </div>
+        </div>
+        
+        <div class="max-w-narrow">
+          <p class="text-sm text-muted mt-12">The model does not treat all historical data as equally valid. It compares the current state only against relevant, verified operating conditions.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Maintenance Section -->
+    <section id="maintenance">
+      <div class="container container--narrow">
+        <h2 class="text-center">Reset & Learn: controlled re-baselining after maintenance</h2>
+        
+        <div class="prose mt-12">
+          <p>Post-maintenance startup data is often chaotic. Lines are being cleared. Temperatures are settling. Operators may intervene more frequently. Mechanical behavior may stabilize only after initial running.</p>
+          <p><strong>Optify does not blindly self-tune on this data.</strong></p>
+          <p>After maintenance, affected local models can be placed into advisory or restricted mode. The system continues to observe, but re-baselining is performed only after a verified steady-state learning window is approved.</p>
+        </div>
+        
+        <!-- Workflow Steps -->
+        <ul class="steps mt-12">
+          <li><div><h4>Maintenance Event Logged</h4></div></li>
+          <li><div><h4>Model Enters Advisory / Restricted Mode</h4></div></li>
+          <li><div><h4>Startup Transients Are Excluded</h4></div></li>
+          <li><div><h4>Engineer Approves Stable Learning Window</h4></div></li>
+          <li><div><h4>New Baseline Compared With Last-Known-Good</h4></div></li>
+        </ul>
+        
+        <div class="highlight-box mt-12">
+          <p>The goal is not blind self-learning. The goal is disciplined re-baselining.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Engineering Visibility Section -->
+    <section class="section--alt" id="engineering-visibility">
+      <div class="container">
+        <h2>Engineer-visible parameters, not magic AI sliders</h2>
+        <p class="mt-8">Optify exposes the important mathematical and control-governance levers to engineers during commissioning and review. Operators see clear recommendations. Engineers can inspect the thresholds behind those recommendations.</p>
+        
+        <!-- Parameters Table -->
+        <div class="mt-12" style="overflow-x: auto;">
+          <table class="parameter-table">
+            <thead>
+              <tr>
+                <th>Parameter</th>
+                <th>Purpose</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Mahalanobis distance threshold</strong></td>
+                <td>Rejects dissimilar historical states</td>
+              </tr>
+              <tr>
+                <td><strong>Minimum neighbor count</strong></td>
+                <td>Prevents weak interpolation from sparse comparison sets</td>
+              </tr>
+              <tr>
+                <td><strong>Interpolation radius</strong></td>
+                <td>Defines the local operating neighborhood</td>
+              </tr>
+              <tr>
+                <td><strong>Ridge regularization strength</strong></td>
+                <td>Stabilizes local fitting under noisy or sparse data</td>
+              </tr>
+              <tr>
+                <td><strong>Confidence floor</strong></td>
+                <td>Blocks recommendations below accepted certainty</td>
+              </tr>
+              <tr>
+                <td><strong>Maximum advisory trim</strong></td>
+                <td>Limits recommendation amplitude</td>
+              </tr>
+              <tr>
+                <td><strong>Freshness weighting</strong></td>
+                <td>Controls how recent verified data influences local behavior</td>
+              </tr>
+              <tr>
+                <td><strong>Zone classification</strong></td>
+                <td>Separates physically different operating regions</td>
+              </tr>
+              <tr>
+                <td><strong>Fallback rule</strong></td>
+                <td>Defines behavior when confidence is low</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <p class="text-sm text-muted mt-12">These are commissioning and governance parameters, not everyday operator controls.</p>
+      </div>
+    </section>
+
+    <!-- Existing Control Systems Section -->
+    <section id="existing-systems">
+      <div class="container">
+        <div class="grid grid--2-cols gap-12">
+          <div>
+            <h2>Works with the existing control stack</h2>
+            <p>Optify is not designed to displace the plant's existing PLC, DCS, APC, or MPC systems.</p>
+            <p>Core automation remains responsible for execution, interlocks, safety, and established control strategy. Optify sits above this foundation as a supervisory optimizer for selected local behaviors affected by drift, maintenance, recipe variation, ambient conditions, or machine-specific response.</p>
+            <p><strong>This makes Optify a low-conflict addition to the control environment.</strong></p>
+          </div>
+          
+          <div>
+            <div class="highlight-box">
+              <p>Existing automation protects the plant. Optify improves visibility and recommendation quality around it.</p>
+            </div>
+            
+            <div style="margin-top: 32px; padding: 32px; background-color: var(--color-bg-secondary); border-radius: 8px; border: 1px solid #e8e8e8;">
+              <p style="font-size: 13px; color: var(--color-text-secondary); margin: 0; line-height: 1.8;">
+                <strong style="color: var(--color-text-primary);">Optify Supervisory Optimizer</strong><br>
+                Advisory trims / confidence scoring / drift detection<br>
+                <span style="color: #999;">↓</span><br>
+                <strong style="color: var(--color-text-primary);">APC / MPC / PLC / DCS</strong><br>
+                Execution / constraints / interlocks / control strategy<br>
+                <span style="color: #999;">↓</span><br>
+                <strong style="color: var(--color-text-primary);">Plant Equipment</strong><br>
+                Actuators / sensors / process loops
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Validation Path Section -->
+    <section class="section--alt" id="validation">
+      <div class="container">
+        <h2 class="text-center">Validate on one high-value loop</h2>
+        <p class="text-center mt-8">Optify does not require a plant-wide deployment to prove value. The recommended starting point is one bounded validation on a selected process loop where drift, variation, or manual correction currently affects consistency.</p>
+        
+        <ul class="steps mt-12">
+          <li><div><h4>Select One Loop</h4><p>Identify one high-value process loop with measurable quality, energy, throughput, or consistency impact.</p></div></li>
+          <li><div><h4>Define Boundaries</h4><p>Define operating zones, valid data windows, exclusion rules, actuator limits, and fallback behavior.</p></div></li>
+          <li><div><h4>Build Local Digital Twin</h4><p>Use verified historical data to build a physics-informed local model around the selected behavior.</p></div></li>
+          <li><div><h4>Run Advisory Comparison</h4><p>Compare Optify's recommendations against actual plant outcomes without changing the process.</p></div></li>
+          <li><div><h4>Review With Engineers</h4><p>Inspect distance thresholds, neighbor quality, confidence scores, and recommendation logic.</p></div></li>
+          <li><div><h4>Decide Integration Level</h4><p>Continue advisory mode, map recommendations into PLC-bounded limits, or stop the validation.</p></div></li>
+        </ul>
+        
+        <div class="highlight-box mt-12">
+          <p>The validation is designed to be reversible, inspectable, and limited in scope.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section id="final-cta">
+      <div class="container container--narrow text-center">
+        <h2>Start with one loop. Prove the behavior. Then decide.</h2>
+        <p class="mt-8">Optify is built for controlled industrial validation. Select one process loop, define the operating envelope, and test whether bounded local mathematics can improve drift visibility and recommendation quality before deeper integration.</p>
+        
+        <div class="flex gap-4 justify-center mt-12">
+          <a href="#contact" class="btn btn-primary">Request an Engineering Validation</a>
+          <a href="/technical-note.pdf" class="btn btn-secondary">Download Technical Note</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section--alt" id="contact">
+      <div class="container container--narrow">
+        <h2 class="text-center">Request an Engineering Validation</h2>
+        <p class="text-center mt-4">Tell us about your process. We'll review the context and respond with the next validation step.</p>
+        
+        <form id="contact-form" class="mt-12">
+          <div class="grid grid--2-cols gap-8">
+            <div class="form-group">
+              <label for="name" class="form-required">Name</label>
+              <input type="text" id="name" name="name" required>
+              <div class="form-error"></div>
+            </div>
+            
+            <div class="form-group">
+              <label for="company" class="form-required">Company</label>
+              <input type="text" id="company" name="company" required>
+              <div class="form-error"></div>
+            </div>
+            
+            <div class="form-group">
+              <label for="email" class="form-required">Work Email</label>
+              <input type="email" id="email" name="email" required>
+              <div class="form-error"></div>
+            </div>
+            
+            <div class="form-group">
+              <label for="role" class="form-required">Role</label>
+              <input type="text" id="role" name="role" required>
+              <div class="form-error"></div>
+            </div>
+            
+            <div class="form-group">
+              <label for="industry" class="form-required">Industry</label>
+              <input type="text" id="industry" name="industry" required>
+              <div class="form-error"></div>
+            </div>
+            
+            <div class="form-group">
+              <label for="processArea" class="form-required">Process Area</label>
+              <input type="text" id="processArea" name="processArea" required>
+              <div class="form-error"></div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="interest">What would you like to evaluate?</label>
+            <select id="interest" name="interest">
+              <option value="">Select an option...</option>
+              <option value="moisture">Moisture control</option>
+              <option value="dryer">Dryer / cooler optimization</option>
+              <option value="energy">Energy consistency</option>
+              <option value="drift">Process drift</option>
+              <option value="maintenance">Maintenance re-baselining</option>
+              <option value="advisory">Operator advisory system</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell us more about your process..."></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-primary btn-block mt-8">Request Validation</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="grid grid--3-cols">
+        <div>
+          <h4 style="color: white; margin-bottom: 12px;">Optify</h4>
+          <p>Industrial Solutions Pvt. Ltd.</p>
+          <p>Pune, India</p>
+        </div>
+        
+        <div>
+          <h4 style="color: white; margin-bottom: 12px;">Contact</h4>
+          <p><a href="mailto:validation@optify.io">validation@optify.io</a></p>
+          <p><a href="tel:+91-xxxx-xxxx-xx">+91-XXXX-XXXX-XX</a></p>
+        </div>
+        
+        <div>
+          <h4 style="color: white; margin-bottom: 12px;">Resources</h4>
+          <div class="footer-links">
+            <a href="/privacy">Privacy Policy</a>
+            <a href="/technical-note.pdf">Technical Note</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-tagline">
+        Bounded supervisory optimization for industrial process drift.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script type="module" src="/js/main.js"></script>
+  
+  <!-- Google Analytics (replace GA_ID with actual ID) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_ID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'GA_ID');
+  </script>
+</body>
+</html>

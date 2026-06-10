@@ -1,0 +1,39 @@
+# GitHub Pages Configuration
+
+title: Optify | Supervisory Optimization for Industrial Process Drift
+description: Bounded supervisory optimization for industrial process drift.
+
+# Theme (optional - using custom CSS)
+# theme: jekyll-theme-minimal
+
+# Build settings
+markdown: kramdown
+exclude:
+  - .git
+  - .gitignore
+  - README.md
+  - config/
+  - scripts/
+  - node_modules/
+
+# Plugins
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# URL configuration
+url: "https://optify.io"
+baseurl: ""
+
+# Analytics
+google_analytics: "GA_ID"
+
+# SEO
+title_separator: " | "
+logo: "/assets/logo.png"
+
+# Social
+social:
+  name: Optify Industrial Solutions
+  links:
+    - https://linkedin.com/company/optify

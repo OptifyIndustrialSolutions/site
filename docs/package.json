@@ -1,0 +1,37 @@
+{
+  "name": "optify-landing-page",
+  "version": "1.0.0",
+  "description": "Bounded supervisory optimization for industrial process drift - Landing page",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000 --directory .",
+    "serve": "npx http-server . -p 8000",
+    "build": "echo 'Static site - no build required'",
+    "test": "echo 'Run tests here'",
+    "lint": "npx htmlhint index.html && npx stylelint 'css/**/*.css'",
+    "audit": "npm audit"
+  },
+  "keywords": [
+    "industrial optimization",
+    "process control",
+    "supervisory optimizer",
+    "PLC",
+    "DCS",
+    "APC"
+  ],
+  "author": "Optify Industrial Solutions",
+  "license": "INTERNAL",
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "htmlhint": "^1.1.4",
+    "stylelint": "^15.10.3",
+    "stylelint-config-standard": "^34.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/optify-io/website_review.git"
+  }
+}
