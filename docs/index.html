@@ -56,29 +56,11 @@
             <h1>Bounded Supervisory Optimization for Industrial Process Drift</h1>
             <p class="text-lg">Optify sits above existing PLC, DCS, APC, or MPC systems to identify localized process drift, recommend inspectable trims, and support controlled re-baselining after maintenance.</p>
             
-            <div class="flex gap-4 mt-8">
-              <a href="#contact" class="btn btn-primary">Request an Engineering Validation</a>
-              <a href="#architecture" class="btn btn-secondary">View Architecture</a>
-            </div>
-            
             <p class="text-sm text-muted mt-12">Edge-resident. Physics-informed. Advisory-first. Built for bounded deployment.</p>
           </div>
           
           <div class="hide-mobile text-center">
-            <div style="padding: 40px; background-color: var(--color-bg-secondary); border-radius: 8px; border: 1px solid #e8e8e8;">
-              <div style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.8;">
-                <div style="margin-bottom: 20px; font-weight: 600; color: var(--color-text-primary);">Optify Supervisory Optimizer</div>
-                <div style="color: #999; margin-bottom: 20px;">↓</div>
-                <div style="margin-bottom: 20px; font-weight: 600; color: var(--color-text-primary);">Existing PLC / DCS / APC / MPC</div>
-                <div style="color: #999; margin-bottom: 20px;">↓</div>
-                <div style="margin-bottom: 20px; font-weight: 600; color: var(--color-text-primary);">Plant Equipment and Sensors</div>
-                <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid #d0d0d0; font-size: 12px; color: var(--color-text-muted);">
-                  <div>Local digital twins</div>
-                  <div>Confidence gates</div>
-                  <div>Advisory trims</div>
-                </div>
-              </div>
-            </div>
+            <img src="assets/images/hero_slide.png" alt="Optify Architecture Diagram: Supervisory Optimizer above PLC/DCS/APC/MPC above Plant Equipment and Sensors" style="width: 100%; max-width: 560px; border-radius: 8px;">
           </div>
         </div>
       </div>
@@ -115,25 +97,21 @@
         
         <div class="grid grid--4-cols mt-12">
           <div class="card">
-            <div class="card-icon">📊</div>
             <h4 class="card-title">Local Drift Detection</h4>
             <p class="card-text">Detects shifts in machine behavior, process response, or operating-zone performance using relevant historical comparison sets.</p>
           </div>
           
           <div class="card">
-            <div class="card-icon">🧮</div>
             <h4 class="card-title">Inspectable Mathematical Layer</h4>
             <p class="card-text">Uses distance-based similarity, local interpolation, and regularized solvers instead of a generic black-box AI model.</p>
           </div>
           
           <div class="card">
-            <div class="card-icon">⚙️</div>
             <h4 class="card-title">Advisory Trim Recommendations</h4>
             <p class="card-text">Recommends conservative trims or setpoint support that can remain advisory or be mapped into strict PLC-bounded limits.</p>
           </div>
           
           <div class="card">
-            <div class="card-icon">🔧</div>
             <h4 class="card-title">Reset & Learn After Maintenance</h4>
             <p class="card-text">Supports controlled re-baselining after maintenance using verified steady-state data, not noisy startup transients.</p>
           </div>
@@ -187,24 +165,7 @@
         <p class="mt-8">Optify's model quality depends on context, not raw data volume. Data is filtered and classified by recipe, operating mode, sensor validity, machine state, maintenance context, and operating zone before it is used for local comparison.</p>
         
         <!-- Architecture Flow Diagram -->
-        <div style="margin: 40px 0; padding: 32px; background-color: var(--color-bg-light); border-radius: 8px; border: 1px solid #e8e8e8; font-size: 13px; line-height: 1.8;">
-          <div style="text-align: center; color: var(--color-text-secondary);">
-            <div style="margin-bottom: 16px;"><strong>Plant Data</strong></div>
-            <div style="color: #999; margin-bottom: 16px;">Sensors / PLC / Historian / Lab Inputs</div>
-            <div style="color: #999; margin-bottom: 16px;">↓</div>
-            <div style="margin-bottom: 16px;"><strong>Context Filter</strong></div>
-            <div style="color: #999; margin-bottom: 16px;">Recipe / Mode / Sensor Validity / Maintenance State / Operating Zone</div>
-            <div style="color: #999; margin-bottom: 16px;">↓</div>
-            <div style="margin-bottom: 16px;"><strong>Local Digital Twin</strong></div>
-            <div style="color: #999; margin-bottom: 16px;">KD-tree / KNN / Mahalanobis Similarity / Ridge Solver</div>
-            <div style="color: #999; margin-bottom: 16px;">↓</div>
-            <div style="margin-bottom: 16px;"><strong>Confidence Gate</strong></div>
-            <div style="color: #999; margin-bottom: 16px;">Distance Threshold / Neighbor Count / Zone Validity / Statistical Limit</div>
-            <div style="color: #999; margin-bottom: 16px;">↓</div>
-            <div style="margin-bottom: 16px;"><strong>Output Layer</strong></div>
-            <div style="color: #999;">Advisory Trim / PLC-Bounded Constraint / Alert / Fallback</div>
-          </div>
-        </div>
+        <img src="assets/images/Edge_architecture.png" alt="Optify Edge Architecture Flow: Plant Data → Context Filter → Local Digital Twin → Confidence Gate → Output Layer" style="width: 100%; max-width: 100%; border-radius: 8px; margin: 40px 0;">
         
         <div class="max-w-narrow">
           <p class="text-sm text-muted mt-12">The model does not treat all historical data as equally valid. It compares the current state only against relevant, verified operating conditions.</p>
