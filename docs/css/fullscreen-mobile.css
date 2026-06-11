@@ -1,0 +1,239 @@
+/* Fullscreen Mobile Mode Styles */
+
+/* Fullscreen Mobile Active State */
+body.fullscreen-mobile-active {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+}
+
+body.fullscreen-mobile-active header {
+  display: none !important;
+}
+
+body.fullscreen-mobile-active main {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+body.fullscreen-mobile-active main::before {
+  content: "Auto-advancing in 10s...";
+  position: fixed;
+  top: var(--space-4);
+  right: var(--space-4);
+  background-color: rgba(0, 61, 115, 0.9);
+  color: white;
+  padding: var(--space-2) var(--space-4);
+  border-radius: 4px;
+  font-size: var(--font-size-xs);
+  z-index: 999;
+  pointer-events: none;
+}
+
+body.fullscreen-mobile-active main::after {
+  content: attr(data-section);
+  position: fixed;
+  top: var(--space-4);
+  left: var(--space-4);
+  background-color: rgba(0, 61, 115, 0.9);
+  color: white;
+  padding: var(--space-2) var(--space-4);
+  border-radius: 4px;
+  font-size: var(--font-size-xs);
+  z-index: 999;
+  pointer-events: none;
+  font-weight: var(--font-weight-semibold);
+}
+
+body.fullscreen-mobile-active section {
+  display: none;
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+  padding: var(--space-8) var(--space-6);
+  margin: 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+body.fullscreen-mobile-active section.active {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--space-16) var(--space-6) 60px;
+  animation: fadeIn 300ms ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0.8;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Footer */
+body.fullscreen-mobile-active footer {
+  display: none !important;
+}
+
+/* Progress bar at bottom */
+body.fullscreen-mobile-active::after {
+  content: "";
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #003d73 0%, #0a5a5a 100%);
+  animation: autoProgressTimer 10s linear infinite;
+  z-index: 1000;
+}
+
+@keyframes autoProgressTimer {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* Exit hint */
+body.fullscreen-mobile-active main {
+  position: relative;
+}
+
+/* Add exit hint before main content */
+body.fullscreen-mobile-active section.active::before {
+  content: "← Back to exit | ESC to exit";
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
+  padding: var(--space-3) var(--space-6);
+  border-radius: 4px;
+  font-size: var(--font-size-xs);
+  z-index: 998;
+  pointer-events: none;
+  text-align: center;
+  white-space: nowrap;
+  font-weight: var(--font-weight-medium);
+}
+
+/* Override container for fullscreen */
+body.fullscreen-mobile-active section .container {
+  padding: 0;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+/* Typography adjustments for fullscreen */
+body.fullscreen-mobile-active section h1 {
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--space-6);
+  line-height: var(--line-height-tight);
+}
+
+body.fullscreen-mobile-active section h2 {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--space-6);
+  line-height: var(--line-height-tight);
+}
+
+body.fullscreen-mobile-active section h3 {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--space-4);
+}
+
+body.fullscreen-mobile-active section h4 {
+  font-size: var(--font-size-base);
+  margin-bottom: var(--space-3);
+}
+
+body.fullscreen-mobile-active section p {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--space-4);
+}
+
+body.fullscreen-mobile-active section ul,
+body.fullscreen-mobile-active section ol {
+  margin-bottom: var(--space-4);
+  padding-left: var(--space-6);
+}
+
+body.fullscreen-mobile-active section li {
+  margin-bottom: var(--space-2);
+  line-height: var(--line-height-relaxed);
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  body.fullscreen-mobile-active section.active {
+    padding: var(--space-12) var(--space-4) 60px;
+  }
+
+  body.fullscreen-mobile-active section h1 {
+    font-size: var(--font-size-xl);
+  }
+
+  body.fullscreen-mobile-active section h2 {
+    font-size: var(--font-size-lg);
+  }
+}
+
+/* Grid adjustment for fullscreen */
+body.fullscreen-mobile-active .grid {
+  flex-direction: column;
+}
+
+body.fullscreen-mobile-active .grid--2-cols,
+body.fullscreen-mobile-active .grid--3-cols,
+body.fullscreen-mobile-active .grid--4-cols {
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+/* Card styles in fullscreen */
+body.fullscreen-mobile-active .card {
+  margin-bottom: var(--space-6);
+}
+
+/* Buttons in fullscreen */
+body.fullscreen-mobile-active .btn {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  margin-bottom: var(--space-3);
+}
+
+/* Hero section specific */
+body.fullscreen-mobile-active .section--hero {
+  background-color: var(--color-bg-primary);
+}
+
+/* Hide elements on certain sections in fullscreen */
+body.fullscreen-mobile-active .hide-mobile {
+  display: none !important;
+}
+
+/* Ensure text is readable */
+body.fullscreen-mobile-active section {
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+}
+
+body.fullscreen-mobile-active section.section--alt {
+  background-color: var(--color-bg-secondary);
+}
+

@@ -4,11 +4,13 @@ import { content } from '../config/content.js';
 import { setupNavigation } from './navigation.js';
 import { setupForm } from './form.js';
 import { setupAnalytics } from './analytics.js';
+import { setupMobileFullscreen } from './fullscreen-mobile.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   setupNavigation();
   setupForm();
   setupAnalytics();
+  setupMobileFullscreen();
   initializeScrollspy();
   logPageMetadata();
 });
