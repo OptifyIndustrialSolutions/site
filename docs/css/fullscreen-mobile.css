@@ -13,11 +13,14 @@ body.fullscreen-mobile-active header {
 }
 
 body.fullscreen-mobile-active main {
-  width: 100%;
-  height: 100vh;
+  width: min(100vw, calc(100vh * 16 / 9));
+  height: min(100vh, calc(100vw * 9 / 16));
+  max-width: 100vw;
+  max-height: 100vh;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
   padding: 0;
-  margin: 0;
+  margin: auto;
   position: relative;
 }
 
@@ -39,7 +42,7 @@ body.fullscreen-mobile-active main::after {
 body.fullscreen-mobile-active section {
   display: none;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   overflow-y: auto;
   padding: var(--space-8) var(--space-6);
   margin: 0;
@@ -47,10 +50,8 @@ body.fullscreen-mobile-active section {
 }
 
 body.fullscreen-mobile-active section.active {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: var(--space-16) var(--space-6) 60px;
+  display: block;
+  padding: var(--space-24) 0 60px;
   animation: fadeIn 300ms ease-in-out;
 }
 
@@ -119,93 +120,23 @@ body.fullscreen-mobile-active section.active::before {
   font-weight: var(--font-weight-medium);
 }
 
-/* Override container for fullscreen */
+/* Keep desktop layout proportions while fullscreen mode is active */
 body.fullscreen-mobile-active section .container {
-  padding: 0;
-  max-width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
+  max-width: var(--max-width-container);
+  padding: 0 var(--space-6);
+  margin: 0 auto;
 }
 
-/* Typography adjustments for fullscreen */
-body.fullscreen-mobile-active section h1 {
-  font-size: var(--font-size-2xl);
-  margin-bottom: var(--space-6);
-  line-height: var(--line-height-tight);
+body.fullscreen-mobile-active .grid--2-cols {
+  grid-template-columns: repeat(2, 1fr);
 }
 
-body.fullscreen-mobile-active section h2 {
-  font-size: var(--font-size-xl);
-  margin-bottom: var(--space-6);
-  line-height: var(--line-height-tight);
+body.fullscreen-mobile-active .grid--3-cols {
+  grid-template-columns: repeat(3, 1fr);
 }
 
-body.fullscreen-mobile-active section h3 {
-  font-size: var(--font-size-lg);
-  margin-bottom: var(--space-4);
-}
-
-body.fullscreen-mobile-active section h4 {
-  font-size: var(--font-size-base);
-  margin-bottom: var(--space-3);
-}
-
-body.fullscreen-mobile-active section p {
-  font-size: var(--font-size-base);
-  line-height: var(--line-height-relaxed);
-  margin-bottom: var(--space-4);
-}
-
-body.fullscreen-mobile-active section ul,
-body.fullscreen-mobile-active section ol {
-  margin-bottom: var(--space-4);
-  padding-left: var(--space-6);
-}
-
-body.fullscreen-mobile-active section li {
-  margin-bottom: var(--space-2);
-  line-height: var(--line-height-relaxed);
-}
-
-/* Responsive adjustments */
-@media (max-width: 640px) {
-  body.fullscreen-mobile-active section.active {
-    padding: var(--space-12) var(--space-4) 60px;
-  }
-
-  body.fullscreen-mobile-active section h1 {
-    font-size: var(--font-size-xl);
-  }
-
-  body.fullscreen-mobile-active section h2 {
-    font-size: var(--font-size-lg);
-  }
-}
-
-/* Grid adjustment for fullscreen */
-body.fullscreen-mobile-active .grid {
-  flex-direction: column;
-}
-
-body.fullscreen-mobile-active .grid--2-cols,
-body.fullscreen-mobile-active .grid--3-cols,
 body.fullscreen-mobile-active .grid--4-cols {
-  grid-template-columns: 1fr;
-  gap: var(--space-6);
-}
-
-/* Card styles in fullscreen */
-body.fullscreen-mobile-active .card {
-  margin-bottom: var(--space-6);
-}
-
-/* Buttons in fullscreen */
-body.fullscreen-mobile-active .btn {
-  width: 100%;
-  padding: var(--space-3) var(--space-4);
-  margin-bottom: var(--space-3);
+  grid-template-columns: repeat(4, 1fr);
 }
 
 /* Hero section specific */
@@ -213,9 +144,9 @@ body.fullscreen-mobile-active .section--hero {
   background-color: var(--color-bg-primary);
 }
 
-/* Hide elements on certain sections in fullscreen */
+/* Keep desktop-only visual blocks visible in fullscreen */
 body.fullscreen-mobile-active .hide-mobile {
-  display: none !important;
+  display: block !important;
 }
 
 /* Ensure text is readable */
