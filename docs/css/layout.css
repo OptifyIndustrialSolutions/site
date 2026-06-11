@@ -89,12 +89,24 @@
 /* Sections */
 
 section {
-  padding: var(--space-24) 0;
+  width: min(100vw, 177.7778vh);
+  height: min(100vh, 56.25vw);
+  aspect-ratio: 16 / 9;
+  box-sizing: border-box;
+  padding: clamp(24px, 4vh, 64px) 0;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+section > .container,
+section > .container.container--narrow {
+  height: 100%;
+  overflow: hidden;
 }
 
 @media (max-width: 768px) {
   section {
-    padding: var(--space-16) 0;
+    padding: clamp(18px, 3vh, 40px) 0;
   }
 }
 
@@ -107,6 +119,129 @@ section.section--hero {
 
 section.section--alt {
   background-color: var(--color-bg-secondary);
+}
+
+/* Slide-fit typography and dense section compaction for 16:9 */
+section h2 {
+  font-size: clamp(1.9rem, 4vh, 3.2rem);
+  margin-bottom: clamp(12px, 1.6vh, 24px);
+}
+
+section p,
+section li {
+  font-size: clamp(0.92rem, 1.65vh, 1.12rem);
+  line-height: 1.45;
+}
+
+#problem .prose,
+#maintenance .prose {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 24px;
+  margin-top: 16px;
+}
+
+#problem .prose p,
+#maintenance .prose p {
+  margin-bottom: 0;
+}
+
+#problem img {
+  margin-top: 16px !important;
+  max-height: 34vh;
+  object-fit: contain;
+}
+
+#maintenance .steps,
+#validation .steps {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 12px;
+  margin-top: 16px;
+}
+
+#maintenance .steps li,
+#validation .steps li {
+  margin-bottom: 0;
+  padding: 12px 14px;
+  gap: 10px;
+}
+
+#maintenance .steps li::before,
+#validation .steps li::before {
+  width: 30px;
+  height: 30px;
+  font-size: var(--font-size-base);
+}
+
+#maintenance .steps li h4,
+#validation .steps li h4 {
+  margin-bottom: 0;
+  font-size: clamp(1rem, 1.9vh, 1.45rem);
+}
+
+#validation .steps li p {
+  margin-top: 4px;
+}
+
+#maintenance .highlight-box,
+#validation .highlight-box {
+  margin-top: 14px;
+  padding: 12px 16px;
+}
+
+/* Architecture section: keep image inside slide */
+#architecture h2 {
+  margin-bottom: 8px;
+}
+
+#architecture .container > p.mt-8 {
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+#contact #contact-form {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px 12px;
+}
+
+#contact #contact-form > .grid {
+  grid-column: 1 / -1;
+  gap: 10px 12px;
+}
+
+#contact #contact-form > .grid.grid--2-cols {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+#contact #contact-form > .form-group {
+  grid-column: span 3;
+  margin-bottom: 0;
+}
+
+#contact #contact-form > .btn {
+  grid-column: 1 / -1;
+  margin-top: 2px;
+  padding: 10px 14px;
+}
+
+#contact .form-group label {
+  margin-bottom: 4px;
+  font-size: var(--font-size-sm);
+}
+
+#contact input,
+#contact select,
+#contact textarea {
+  padding: 8px 10px;
+  font-size: var(--font-size-sm);
+}
+
+#contact .form-group textarea {
+  min-height: 64px;
+  resize: none;
 }
 
 /* Spacing Utilities */
