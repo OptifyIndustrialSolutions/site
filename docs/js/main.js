@@ -6,6 +6,9 @@ import { setupForm } from './form.js';
 import { setupAnalytics } from './analytics.js';
 import { setupMobileFullscreen } from './fullscreen-mobile.js';
 
+const isDevEnvironment =
+  window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+
 document.addEventListener('DOMContentLoaded', () => {
   setupNavigation();
   setupForm();
@@ -48,7 +51,7 @@ function initializeScrollspy() {
  * Log page metadata for verification
  */
 function logPageMetadata() {
-  if (process.env.NODE_ENV !== 'production') {
+  if (isDevEnvironment) {
     console.log('=== Optify Landing Page ===');
     console.log(`Title: ${content.site.title}`);
     console.log(`URL: ${content.site.url}`);

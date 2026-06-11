@@ -7,6 +7,10 @@ export function setupAnalytics() {
   trackSectionViews();
 }
 
+const isDevEnvironment =
+  typeof window !== 'undefined' &&
+  (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+
 /**
  * Track page view
  */
@@ -141,7 +145,7 @@ export function trackEvent(eventName, data = {}) {
     }
 
     // Custom console logging for development
-    if (process.env.NODE_ENV !== 'production') {
+    if (isDevEnvironment) {
       console.log(`📊 Event: ${eventName}`, data);
     }
   }

@@ -20,7 +20,6 @@ const SECTIONS = [
 let isFullscreenActive = false;
 let currentSectionIndex = 0;
 let autoAdvanceTimer = null;
-let clickListenerActive = false;
 
 /**
  * Check if device is in mobile view
@@ -54,25 +53,35 @@ function updateActiveSection() {
 async function enterFullscreen() {
   try {
     const elem = document.documentElement;
+    let fullscreenPromise = null;
 
     if (elem.requestFullscreen) {
-      await elem.requestFullscreen();
+      fullscreenPromise = elem.requestFullscreen();
     } else if (elem.webkitRequestFullscreen) {
-      // Safari
-      await elem.webkitRequestFullscreen();
+      fullscreenPromise = elem.webkitRequestFullscreen();
+    } else if (elem.mozRequestFullScreen) {
+      fullscreenPromise = elem.mozRequestFullScreen();
     } else if (elem.msRequestFullscreen) {
-      // IE11
-      await elem.msRequestFullscreen();
+      fullscreenPromise = elem.msRequestFullscreen();
+    }
+
+    if (fullscreenPromise) {
+      await fullscreenPromise;
     }
 
     isFullscreenActive = true;
     document.body.classList.add('fullscreen-mobile-active');
-    clickListenerActive = false;
     currentSectionIndex = 0;
     updateActiveSection();
     startAutoAdvance();
   } catch (err) {
     console.error('Fullscreen request failed:', err);
+    // Fallback: still activate fullscreen styling even if API fails
+    isFullscreenActive = true;
+    document.body.classList.add('fullscreen-mobile-active');
+    currentSectionIndex = 0;
+    updateActiveSection();
+    startAutoAdvance();
   }
 }
 
@@ -80,16 +89,20 @@ async function enterFullscreen() {
  * Exit fullscreen
  */
 function exitFullscreen() {
-  if (document.fullscreenElement || document.webkitFullscreenElement) {
-    if (document.exitFullscreen) {
-      document.exitFullscreen();
-    } else if (document.webkitExitFullscreen) {
-      // Safari
-      document.webkitExitFullscreen();
-    } else if (document.msExitFullscreen) {
-      // IE11
-      document.msExitFullscreen();
+  try {
+    if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement) {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      }
     }
+  } catch (err) {
+    console.error('Fullscreen exit error:', err);
   }
 
   isFullscreenActive = false;
@@ -106,7 +119,10 @@ function exitFullscreen() {
     }
   });
 
-  setupClickListener();
+  // Re-enable click listener after a short delay
+  setTimeout(() => {
+    setupClickListener();
+  }, 100);
 }
 
 /**
@@ -187,6 +203,7 @@ function handleFullscreenChange() {
   const isCurrentlyFullscreen = !!(
     document.fullscreenElement || 
     document.webkitFullscreenElement ||
+    document.mozFullScreenElement ||
     document.msFullscreenElement
   );
 
@@ -199,29 +216,43 @@ function handleFullscreenChange() {
  * Setup click listener for activation
  */
 function setupClickListener() {
-  if (clickListenerActive || !isMobileView()) {
+  if (!isMobileView()) {
     return;
   }
 
-  clickListenerActive = true;
+  // Remove any existing listener first
+  document.removeEventListener('click', globalClickHandler);
 
-  const clickHandler = () => {
-    if (!isFullscreenActive && isMobileView()) {
-      document.removeEventListener('click', clickHandler);
-      enterFullscreen();
-    }
-  };
+  // Add new listener
+  document.addEventListener('click', globalClickHandler, true);
+}
 
-  document.addEventListener('click', clickHandler);
+/**
+ * Global click handler for fullscreen activation
+ */
+function globalClickHandler(event) {
+  if (!isFullscreenActive && isMobileView()) {
+    // Prevent default only if entering fullscreen
+    event.preventDefault();
+    event.stopPropagation();
+    
+    // Remove listener before entering fullscreen
+    document.removeEventListener('click', globalClickHandler, true);
+    
+    enterFullscreen();
+  }
 }
 
 /**
  * Initialize mobile fullscreen functionality
  */
 export function setupMobileFullscreen() {
+  // Only setup on mobile
   if (!isMobileView()) {
-    return; // Only activate on mobile
+    return;
   }
+
+  console.log('Mobile fullscreen setup initialized');
 
   // Setup initial click listener
   setupClickListener();
@@ -237,6 +268,7 @@ export function setupMobileFullscreen() {
   // Handle fullscreen change (user exits via browser UI)
   document.addEventListener('fullscreenchange', handleFullscreenChange);
   document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+  document.addEventListener('mozfullscreenchange', handleFullscreenChange);
   document.addEventListener('msfullscreenchange', handleFullscreenChange);
 
   // Handle window resize to re-check if still mobile
@@ -246,4 +278,5 @@ export function setupMobileFullscreen() {
     }
   });
 }
+
 
