@@ -21,20 +21,6 @@ body.fullscreen-mobile-active main {
   position: relative;
 }
 
-body.fullscreen-mobile-active main::before {
-  content: "Auto-advancing in 10s...";
-  position: fixed;
-  top: var(--space-4);
-  right: var(--space-4);
-  background-color: rgba(0, 61, 115, 0.9);
-  color: white;
-  padding: var(--space-2) var(--space-4);
-  border-radius: 4px;
-  font-size: var(--font-size-xs);
-  z-index: 999;
-  pointer-events: none;
-}
-
 body.fullscreen-mobile-active main::after {
   content: attr(data-section);
   position: fixed;
@@ -93,6 +79,11 @@ body.fullscreen-mobile-active::after {
   background: linear-gradient(90deg, #003d73 0%, #0a5a5a 100%);
   animation: autoProgressTimer 10s linear infinite;
   z-index: 1000;
+}
+
+body.fullscreen-mobile-active.auto-advance-complete::after {
+  animation: none;
+  width: 100%;
 }
 
 @keyframes autoProgressTimer {

@@ -45,6 +45,10 @@ function updateActiveSection() {
 
   // Update data attribute for section counter
   document.body.setAttribute('data-section', `${currentSectionIndex + 1}/${SECTIONS.length}`);
+  const mainElement = document.querySelector('main');
+  if (mainElement) {
+    mainElement.setAttribute('data-section', `${currentSectionIndex + 1}/${SECTIONS.length}`);
+  }
 }
 
 /**
@@ -71,6 +75,7 @@ async function enterFullscreen() {
 
     isFullscreenActive = true;
     document.body.classList.add('fullscreen-mobile-active');
+    document.body.classList.remove('auto-advance-complete');
     currentSectionIndex = 0;
     updateActiveSection();
     startAutoAdvance();
@@ -79,6 +84,7 @@ async function enterFullscreen() {
     // Fallback: still activate fullscreen styling even if API fails
     isFullscreenActive = true;
     document.body.classList.add('fullscreen-mobile-active');
+    document.body.classList.remove('auto-advance-complete');
     currentSectionIndex = 0;
     updateActiveSection();
     startAutoAdvance();
@@ -107,7 +113,12 @@ function exitFullscreen() {
 
   isFullscreenActive = false;
   document.body.classList.remove('fullscreen-mobile-active');
+  document.body.classList.remove('auto-advance-complete');
   document.body.removeAttribute('data-section');
+  const mainElement = document.querySelector('main');
+  if (mainElement) {
+    mainElement.removeAttribute('data-section');
+  }
   stopAutoAdvance();
   currentSectionIndex = 0;
   
@@ -142,6 +153,7 @@ function navigateToSection(index) {
  */
 function nextSection() {
   if (currentSectionIndex < SECTIONS.length - 1) {
+    document.body.classList.remove('auto-advance-complete');
     navigateToSection(currentSectionIndex + 1);
   }
 }
@@ -160,13 +172,15 @@ function previousSection() {
  */
 function startAutoAdvance() {
   stopAutoAdvance(); // Clear any existing timer
+  document.body.classList.remove('auto-advance-complete');
 
   autoAdvanceTimer = setInterval(() => {
     if (currentSectionIndex < SECTIONS.length - 1) {
       nextSection();
     } else {
-      // At last section - exit fullscreen
-      exitFullscreen();
+      // At last section - stop auto-advance and remain on final section
+      stopAutoAdvance();
+      document.body.classList.add('auto-advance-complete');
     }
   }, 10000); // 10 seconds
 }
