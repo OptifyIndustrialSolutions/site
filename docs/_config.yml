@@ -12,7 +12,6 @@ exclude:
   - .git
   - .gitignore
   - README.md
-  - config/
   - scripts/
   - node_modules/
 
