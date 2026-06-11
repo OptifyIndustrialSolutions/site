@@ -104,7 +104,7 @@ Edit `css/variables.css`:
 ### Add an Image
 
 1. Place image in `assets/images/`
-2. Reference in HTML: `<img src="/assets/images/your-image.png" alt="Description">`
+2. Reference in HTML: `<img src="assets/images/your-image.png" alt="Description">`
 
 ### Change Form Fields
 
@@ -133,7 +133,7 @@ Edit `config/content.js` → `navigation.items` array
 | Problem | Solution |
 |---------|----------|
 | Styles not loading | Clear browser cache (Cmd+Shift+Delete) or hard refresh (Cmd+Shift+R) |
-| Images not showing | Check path starts with `/assets/` not `assets/` |
+| Images not showing | Check path is project-relative, e.g. `assets/...` (not root-relative `/assets/...`) |
 | Form not submitting | Check backend endpoint URL in `js/form.js` and network tab in DevTools |
 | Mobile menu broken | Check hamburger state in `navigation.js` |
 | Analytics not tracking | Replace `GA_ID` with actual Google Analytics ID |

@@ -30,7 +30,7 @@ google_analytics: "GA_ID"
 
 # SEO
 title_separator: " | "
-logo: "/assets/logo.png"
+logo: "assets/logo.png"
 
 # Social
 social:

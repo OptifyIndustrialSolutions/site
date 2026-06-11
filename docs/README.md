@@ -251,7 +251,7 @@ Edit `config/content.js` and the changes automatically reflect across all sectio
 
 - **Email**: validation@optify.io
 - **Documentation**: See `.github/instructions/meta_prompt.instructions.md`
-- **Technical Note**: PDF available at `/technical-note.pdf` (to be added)
+- **Technical Note**: PDF available at `technical-note.pdf` (to be added)
 
 ---
 

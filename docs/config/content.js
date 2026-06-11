@@ -228,8 +228,8 @@ This makes Optify a low-conflict addition to the control environment.`,
     email: 'validation@optify.io',
     tagline: 'Bounded supervisory optimization for industrial process drift.',
     links: [
-      { label: 'Privacy Policy', href: '/privacy' },
-      { label: 'Technical Note', href: '/technical-note.pdf' },
+      { label: 'Privacy Policy', href: 'privacy' },
+      { label: 'Technical Note', href: 'technical-note.pdf' },
     ],
   },
 };
