@@ -254,6 +254,34 @@ section li {
   resize: none;
 }
 
+@media (max-width: 768px) {
+  #problem .prose,
+  #maintenance .prose,
+  #maintenance .steps,
+  #validation .steps {
+    grid-template-columns: 1fr;
+  }
+
+  #maintenance .steps li,
+  #validation .steps li {
+    margin-bottom: 8px;
+  }
+
+  #contact #contact-form {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  #contact #contact-form > .grid.grid--2-cols {
+    grid-template-columns: 1fr;
+  }
+
+  #contact #contact-form > .form-group,
+  #contact #contact-form > .btn {
+    grid-column: 1;
+  }
+}
+
 /* Spacing Utilities */
 
 .mt-4 { margin-top: var(--space-4); }
