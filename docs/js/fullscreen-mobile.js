@@ -261,36 +261,8 @@ function globalClickHandler(event) {
  * Initialize mobile fullscreen functionality
  */
 export function setupMobileFullscreen() {
-  // Only setup on mobile
-  if (!isMobileView()) {
-    return;
-  }
-
-  console.log('Mobile fullscreen setup initialized');
-
-  // Setup initial click listener
-  setupClickListener();
-
-  // Handle escape key / back button
-  document.addEventListener('keydown', (e) => {
-    if (isFullscreenActive && (e.key === 'Escape' || e.key === 'Backspace')) {
-      e.preventDefault();
-      handleBackButton();
-    }
-  });
-
-  // Handle fullscreen change (user exits via browser UI)
-  document.addEventListener('fullscreenchange', handleFullscreenChange);
-  document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
-  document.addEventListener('mozfullscreenchange', handleFullscreenChange);
-  document.addEventListener('msfullscreenchange', handleFullscreenChange);
-
-  // Handle window resize to re-check if still mobile
-  window.addEventListener('resize', () => {
-    if (!isMobileView() && isFullscreenActive) {
-      exitFullscreen();
-    }
-  });
+  // Mobile fullscreen is intentionally disabled.
+  return;
 }
 
 

@@ -106,7 +106,17 @@ section > .container.container--narrow {
 
 @media (max-width: 768px) {
   section {
+    width: 100%;
+    height: auto;
+    aspect-ratio: auto;
+    overflow: visible;
     padding: clamp(18px, 3vh, 40px) 0;
+  }
+
+  section > .container,
+  section > .container.container--narrow {
+    height: auto;
+    overflow: visible;
   }
 }
 
@@ -348,7 +358,7 @@ section li {
 
 @media (max-width: 768px) {
   .hide-mobile {
-    display: none;
+    display: block;
   }
 }
 
